@@ -92,9 +92,18 @@ Execute these phases in strict order. **NEVER skip a phase or step.**
 20. Announce: "所有文件已定稿且通過可行性評估，進入實作階段"
 
 ### Phase 3: Implementation (Dispatch Agents)
-20. Dispatch **e2e-expert** agent to write Playwright tests
+
+**IMPORTANT:** When dispatching each agent, read the corresponding `docs/plan/implementation-notes/{role}.md` file FIRST and include its content directly in the agent's dispatch prompt. Do NOT rely on the agent to read it themselves. Example:
+```
+Agent prompt: "Implement the backend for refresh token feature.
+Here are the implementation notes:
+{paste content of docs/plan/implementation-notes/backend.md}
+..."
+```
+
+20. Read `docs/plan/implementation-notes/e2e.md`, dispatch **e2e-expert** agent with the notes included in the prompt
 21. E2E Expert runs `npm run test:e2e` — **ALL tests MUST be RED (failing)**. If any test passes, it means the test is not actually testing new behavior — report to user and fix.
-22. Dispatch **backend-expert** and **frontend-expert** agents IN PARALLEL
+22. Read `docs/plan/implementation-notes/backend.md` and `frontend.md`, dispatch **backend-expert** and **frontend-expert** agents IN PARALLEL with their respective notes included
 22. Dispatch **code-reviewer** agent to review all new code
 23. If Code Reviewer finds issues: fix and re-review until approved
 24. Run tests: `npm run test:e2e`

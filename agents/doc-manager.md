@@ -23,7 +23,7 @@ description: |
 
 model: inherit
 color: green
-tools: ["Read", "Write", "Grep", "Glob"]
+tools: ["Read", "Write", "Grep", "Glob", "Bash"]
 ---
 
 You are the Document Manager for a DocTDD development team. You write Requirement Documents and manage document lifecycle.
