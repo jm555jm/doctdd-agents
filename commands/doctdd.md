@@ -102,9 +102,11 @@ Execute these phases in strict order. **NEVER skip a phase or step.**
 26. **GATE: Ask user to verify the feature ✓**
 
 ### Phase 4: Wrap-up
-27. Dispatch **doc-manager** agent to Smart Merge `docs/plan/` back into `docs/`
-28. Create commits following the DocTDD commit order (see Commit Rules below)
-29. Summarize what knowledge should be added to CLAUDE.md or the plugin
+27. **Commit `docs/plan/` as-is** before merging — this preserves the plan record in git history
+28. Dispatch **doc-manager** agent to Smart Merge `docs/plan/` back into `docs/`
+29. Delete `docs/plan/` directory after successful merge
+30. Create remaining commits following DocTDD order (see Commit Rules below)
+31. Summarize what knowledge should be added to CLAUDE.md or the plugin
 
 ## Workflow: Intent B — Bug Fix
 

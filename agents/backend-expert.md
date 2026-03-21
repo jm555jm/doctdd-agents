@@ -70,6 +70,7 @@ Step 0 — **MANDATORY reads before writing any code:**
 7. Existing code in `packages/backend/src/` — understand current patterns
 
 Step 1 — **Implement:**
+0. **BEFORE running any command**, run `pwd` to verify you are in the project root directory. If not, `cd` to it first.
 1. If DB changes needed: update `prisma/schema.prisma` and run migration
 2. Implement route handlers following existing patterns in `src/routes/`
 3. Register routes in `src/server.ts` if needed

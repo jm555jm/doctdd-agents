@@ -41,9 +41,10 @@ Step 1 — **Write tests:**
 1. Write new test file(s) to `packages/e2e/tests/`
 
 Step 2 — **Red light verification:**
-1. Run `npm run test:e2e`
-2. **ALL new tests MUST FAIL (red).** This confirms they are testing new, unimplemented behavior.
-3. If any new test passes, it means the test is not actually verifying new functionality — fix the test.
+1. **BEFORE running any command**, verify you are in the project root directory by running `pwd`. The project root contains `package.json` with workspaces config. If you are NOT in the project root, `cd` to it first. **NEVER run `npm run test:e2e` from a subdirectory — it will fail.**
+2. Run `npm run test:e2e`
+3. **ALL new tests MUST FAIL (red).** This confirms they are testing new, unimplemented behavior.
+4. If any new test passes, it means the test is not actually verifying new functionality — fix the test.
 
 **Test Conventions (from existing codebase):**
 

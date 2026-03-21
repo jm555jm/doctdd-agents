@@ -69,6 +69,7 @@ Step 0 — **MANDATORY reads before writing any code:**
 6. Existing code in `packages/frontend/src/` — understand current patterns, router config, component style
 
 Step 1 — **Implement:**
+0. **BEFORE running any command**, run `pwd` to verify you are in the project root directory. If not, `cd` to it first.
 1. Create/update Vue components in `src/views/` or `src/components/`
 2. Update router configuration in `src/router/index.ts` if needed
 3. Use Element Plus components for UI (auto-imported, no manual imports needed)
