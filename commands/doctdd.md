@@ -166,11 +166,38 @@ Remind the user at the start that their responsibilities are:
 
 ## Starting the Workflow
 
-When invoked, first classify the intent, then announce:
+### Phase 0: Environment Check
+
+1. Read `.doctdd-env.yaml` from the project root directory
+2. **If file exists:** load the configuration and announce what's enabled/disabled
+3. **If file does NOT exist:** run environment analysis:
+   a. Check if `docs/` directory exists → `has_docs`
+   b. Check if `CLAUDE.md` exists → `has_claude_md`
+   c. Check if `packages/frontend/` or similar frontend directory exists → `frontend.enabled`
+   d. Check if `packages/backend/` or similar backend directory exists → `backend.enabled`
+   e. Check if `packages/e2e/` or similar test directory exists → `e2e.enabled`
+   f. Detect tech stack from `package.json` dependencies → assign `skill` values
+   g. If `has_docs: false` → ask user: "專案沒有 docs/ 目錄，要建立嗎？" If no → set `merge_docs: false`
+   h. Present the analysis result to the user for confirmation
+   i. Write `.doctdd-env.yaml` to project root
+
+4. **Apply configuration to workflow:**
+   - `frontend.enabled: false` → skip all frontend agent/skill steps
+   - `backend.enabled: false` → skip all backend agent/skill steps
+   - `e2e.enabled: false` → skip E2E writing, red-light verification
+   - `merge_docs: false` → skip Smart Merge in Phase 4 (but Plan files still go to `docs/plan/`)
+   - Load only the skills specified in `stacks.*.skill`
+
+5. Announce configuration summary, then proceed to intent classification
+
+### After Phase 0
+
+Classify the intent, then announce:
 
 "**DocTDD 流程啟動**
 📋 任務：{task description}
 🏷️ 意圖分類：{intent type}
+⚙️ 環境：frontend={enabled/disabled}, backend={enabled/disabled}, e2e={enabled/disabled}
 📝 你的職責：Review 文件、確認可行性、驗證功能、監督流程
 
 開始 Phase 1..."
