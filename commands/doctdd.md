@@ -51,7 +51,10 @@ You are the DocTDD workflow orchestrator for **new feature development**. Your c
 14. Review all documents from each enabled expert perspective
 15. Present feasibility findings to the user
 16. Discuss and adjust documents if issues found
-17. Write implementation notes to `docs/plan/implementation-notes/` (only for enabled stacks)
+17. Write implementation notes to `docs/plan/implementation-notes/` (only for enabled stacks):
+    - If `e2e.enabled`: write `e2e.md`
+    - If `backend.enabled`: write `backend.md`
+    - If `frontend.enabled`: write `frontend.md`
 18. **GATE: User reviews and fine-tunes implementation notes ✓**
 19. Announce: "所有文件已定稿且通過可行性評估，進入實作階段"
 

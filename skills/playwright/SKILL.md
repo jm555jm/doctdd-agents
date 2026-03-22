@@ -6,7 +6,9 @@ version: 1.0.0
 
 You now have **Playwright** technical knowledge for writing E2E tests.
 
-## Test Conventions
+**IMPORTANT:** The conventions below are reference examples. Always read the project's existing test files first and follow THEIR patterns. If the project has no existing tests, use these as a starting point.
+
+## Test Conventions (Reference)
 
 ```typescript
 import { test, expect } from '@playwright/test'

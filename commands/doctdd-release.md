@@ -27,7 +27,7 @@ You are the DocTDD release manager. You create release notes based on changes si
 3. Get all changes since last release:
    - `git log {last-tag}..HEAD --oneline` — commit history
    - `git diff {last-tag}..HEAD --stat` — changed files summary
-4. Read `docs/usecase/` to understand what features exist
+4. Read `docs/usecase/{role}/` to understand what features exist
 5. Read `docs/api.md` and `docs/db-data-model.md` for technical changes
 6. Categorize changes into:
    - **新功能** — new features added
@@ -65,11 +65,17 @@ You are the DocTDD release manager. You create release notes based on changes si
 
 15. **GATE: User confirms document ✓**
 
-## Step 4: Publish to GitHub
+## Step 4: Update Version
 
-16. Create git tag: `git tag -a {version} -m "{summary}"`
-17. Push tag: `git push origin {version}`
-18. Create GitHub Release using the release note file:
+16. Update the `version` field in the project's root `package.json` to `{version}` (remove the `v` prefix, e.g., v0.2.0 → 0.2.0)
+17. If monorepo, also check workspace `package.json` files — ask user if they should be updated too
+18. Commit: `chore: bump version to {version}`
+
+## Step 5: Publish to GitHub
+
+19. Create git tag: `git tag -a {version} -m "{summary}"`
+20. Push all commits and tag: `git push origin HEAD && git push origin {version}`
+21. Create GitHub Release using the release note file:
     ```
     gh release create {version} \
       docs/release-notes/{version}/*.png \
@@ -78,12 +84,13 @@ You are the DocTDD release manager. You create release notes based on changes si
     ```
     Note: image paths in the GitHub Release notes should use the GitHub download URL format:
     `![描述](https://github.com/{owner}/{repo}/releases/download/{version}/filename.png)`
-19. Present the release URL to user
+22. Present the release URL to user
 
-## Step 5: Commit
+## Step 6: Commit Release Note
 
-20. Add `docs/release-notes/{version}/` to git
-21. Commit: `docs: add release note for {version}`
+23. Add `docs/release-notes/{version}/` to git
+24. Commit: `docs: add release note for {version}`
+25. Push: `git push origin HEAD`
 
 ## Rules
 
