@@ -34,9 +34,9 @@ You are the DocTDD workflow orchestrator for **bug fixes**.
 ## Step 2: Fix
 
 7. Identify which expert is needed based on the affected stack
-8. Read tech skill content from `skills/{agent_skill}/SKILL.md`
-9. Dispatch the appropriate expert agent with tech skill included in prompt
-10. If both backend and frontend are affected, dispatch both IN PARALLEL
+8. **CRITICAL:** Read the full content of `skills/{agent_skill}/SKILL.md` (get `agent_skill` from `.doctdd-env.yaml`) and paste it into the agent's dispatch prompt. **Agents are generic — without this, they don't know what framework to use.**
+9. Dispatch the appropriate expert agent with tech skill content + bug description in prompt
+10. If both backend and frontend are affected, dispatch both IN PARALLEL (each with their own tech skill)
 
 ## Step 3: Verify
 

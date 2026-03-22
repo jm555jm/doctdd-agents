@@ -60,11 +60,29 @@ You are the DocTDD workflow orchestrator for **new feature development**. Your c
 
 ## Phase 3: Implementation (Dispatch Agents)
 
-**Before dispatching each agent:** read tech skill + implementation notes, include in prompt.
+**CRITICAL — Tech Skill Injection Protocol:**
+Agents are generic — they do NOT know what framework or tools the project uses. Before dispatching EACH agent, MUST:
+1. Read the file at `skills/{agent_skill}/SKILL.md` (get `agent_skill` value from `.doctdd-env.yaml`)
+2. Read `docs/plan/implementation-notes/{role}.md` (if exists)
+3. Paste BOTH contents into the agent's dispatch prompt, like this:
+```
+"Implement the backend feature.
 
-20. **[if e2e.enabled]** Dispatch **e2e-expert** agent with `{e2e.agent_skill}` skill + `implementation-notes/e2e.md`
+=== Tech Skill (from skills/fastify-prisma/SKILL.md) ===
+{paste full content here}
+
+=== Implementation Notes ===
+{paste full content here}
+
+=== Task ===
+{describe what to implement}
+"
+```
+**If you skip this, the agent will not know what framework to use and will fail.**
+
+20. **[if e2e.enabled]** Read `skills/{e2e.agent_skill}/SKILL.md` + `implementation-notes/e2e.md`, dispatch **e2e-expert** agent with both included
 21. **[if e2e.enabled]** Run `{commands.test_e2e}` — **ALL tests MUST be RED.** If any passes, report to user.
-22. Dispatch enabled implementation agents (backend/frontend) IN PARALLEL with their tech skills + notes
+22. **[if backend/frontend enabled]** Read corresponding `skills/{agent_skill}/SKILL.md` + `implementation-notes/{role}.md`, dispatch agents IN PARALLEL with content included
 23. Dispatch **code-reviewer** agent to review all new code
 24. If Code Reviewer finds issues: fix and re-review until approved
 25. **[if e2e.enabled]** Run `{commands.test_e2e}` — all tests must pass
