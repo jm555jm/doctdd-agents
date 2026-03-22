@@ -1,6 +1,7 @@
 ---
 name: doctdd-base
 description: This skill should be used when any /doctdd command starts, to load shared environment configuration, rules, commit conventions, and Taiwan terminology standards.
+disable-model-invocation: true
 version: 1.0.0
 ---
 

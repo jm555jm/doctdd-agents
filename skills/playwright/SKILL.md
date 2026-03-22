@@ -1,6 +1,7 @@
 ---
 name: playwright
 description: This skill should be used when writing Playwright E2E tests, or when the /doctdd command dispatches the e2e-expert agent during Phase 3. Provides test conventions, locator patterns, configuration, and project structure knowledge.
+disable-model-invocation: true
 version: 1.0.0
 ---
 

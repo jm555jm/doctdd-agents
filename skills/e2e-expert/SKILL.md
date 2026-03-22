@@ -1,6 +1,7 @@
 ---
 name: e2e-expert
 description: This skill should be used when the user asks to "review test feasibility", "check if ACs are testable", "evaluate E2E coverage", or when the /doctdd command enters Phase 2.5 (technical feasibility review) for E2E testing evaluation.
+disable-model-invocation: true
 version: 1.0.0
 ---
 

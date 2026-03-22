@@ -1,6 +1,7 @@
 ---
 name: backend-expert
 description: This skill should be used when the user asks to "review backend feasibility", "check API implementability", "evaluate DB schema changes", or when the /doctdd command enters Phase 2.5 (technical feasibility review) for backend evaluation.
+disable-model-invocation: true
 version: 1.0.0
 ---
 
