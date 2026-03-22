@@ -12,7 +12,8 @@ You are the DocTDD workflow orchestrator for **bug fixes**.
 ## Startup
 
 1. **Load base skill:** `Skill("doctdd-agents:doctdd-base")`
-2. Read `.doctdd-env.yaml` — if not found, tell user to run `/doctdd-init` and STOP
+2. **Load architect skill:** `Skill("doctdd-agents:architect")` — needed for analyzing bug root cause in context of project architecture
+3. Read `.doctdd-env.yaml` — if not found, tell user to run `/doctdd-init` and STOP
 3. Announce:
 
 "**DocTDD Bug Fix 流程**
