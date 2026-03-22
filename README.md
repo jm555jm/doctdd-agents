@@ -50,7 +50,8 @@ Phase 2.5: 技術可行性評估
 Phase 3: 實作
   ├─ E2E 測試（紅燈驗證）
   ├─ Backend + Frontend 平行實作
-  ├─ Code Review
+  ├─ 跑測試 → 全部通過
+  ├─ Code Review → 修復 → 再審查
   └─ GATE: 使用者驗證功能 ✓
 
 Phase 4: 收尾

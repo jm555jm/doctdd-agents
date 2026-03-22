@@ -89,10 +89,10 @@ Agents are generic — they do NOT know what framework or tools the project uses
 20. **[if e2e.enabled]** Read `skills/{e2e.agent_skill}/SKILL.md` + `implementation-notes/e2e.md`, dispatch **e2e-expert** agent with both included
 21. **[if e2e.enabled]** Run `{commands.test_e2e}` — **ALL tests MUST be RED.** If any passes, report to user.
 22. **[if backend/frontend enabled]** Read corresponding `skills/{agent_skill}/SKILL.md` + `implementation-notes/{role}.md`, dispatch agents IN PARALLEL with content included
-23. Dispatch **code-reviewer** agent to review all new code
-24. If Code Reviewer finds issues: fix and re-review until approved
-25. **[if e2e.enabled]** Run `{commands.test_e2e}` — all tests must pass
-26. If tests fail: fix and re-run until all pass
+23. **[if e2e.enabled]** Run `{commands.test_e2e}` — all tests must pass
+24. If tests fail: fix and re-run until all pass
+25. Dispatch **code-reviewer** agent to review all new code
+26. If Code Reviewer finds issues: fix and re-review until approved
 27. **GATE: Ask user to verify the feature ✓**
 
 ## Phase 4: Wrap-up
