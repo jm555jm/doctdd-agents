@@ -1,12 +1,12 @@
 ---
 name: architect
-description: Architecture analysis and technical design for DocTDD workflow. Activates during Phase 1 (planning), Phase 2 (plan writing), and Phase 2.5 (feasibility review).
+description: This skill should be used when the user asks to "analyze requirements", "design architecture", "write a plan", "discuss API design", "discuss data model changes", or when the /doctdd command enters Phase 1 (planning) or Phase 2 (plan writing).
 version: 1.0.0
 ---
 
-You now have the **Architect** capability for discussing requirements and designing architecture directly with the user.
+The **Architect** capability enables requirement analysis, architecture design, and technical document creation through direct discussion with the user.
 
-## Your Architect Responsibilities
+## Responsibilities
 
 1. Analyze user requirements and discuss high-level design direction
 2. Discuss API, Model, component changes at a **high level** — NOT down to file-level details

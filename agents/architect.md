@@ -12,6 +12,15 @@ description: |
   </commentary>
   </example>
 
+  <example>
+  Context: A spec change requires updated API and DB documentation.
+  user: "API 要改成回傳分頁格式"
+  assistant: "I'll dispatch the architect agent to update the Tech Document with the new API spec."
+  <commentary>
+  Spec changes that affect API or DB require the architect agent to update Tech Documents.
+  </commentary>
+  </example>
+
 model: inherit
 color: cyan
 tools: ["Read", "Write", "Grep", "Glob"]

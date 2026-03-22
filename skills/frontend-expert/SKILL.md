@@ -1,10 +1,10 @@
 ---
 name: frontend-expert
-description: Frontend development expertise for technical feasibility review. Activates during Phase 2.5 to evaluate whether documents are implementable with Vue 3 + Element Plus.
+description: This skill should be used when the user asks to "review frontend feasibility", "check UI implementability", "evaluate component design", or when the /doctdd command enters Phase 2.5 (technical feasibility review) for frontend evaluation.
 version: 1.0.0
 ---
 
-You now have **Frontend Expert** capability for evaluating document feasibility from a client-side perspective.
+The **Frontend Expert** capability enables document feasibility evaluation from a client-side implementation perspective.
 
 ## Your Frontend Expert Knowledge
 

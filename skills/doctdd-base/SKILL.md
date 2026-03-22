@@ -1,10 +1,10 @@
 ---
 name: doctdd-base
-description: DocTDD shared rules and environment loading. Loaded by all /doctdd-* commands.
+description: This skill should be used when any /doctdd command starts, to load shared environment configuration, rules, commit conventions, and Taiwan terminology standards.
 version: 1.0.0
 ---
 
-You now have the **DocTDD Base** configuration loaded.
+The **DocTDD Base** configuration provides shared environment loading, workflow rules, and commit conventions for all /doctdd commands.
 
 ## Phase 0: Load Environment
 

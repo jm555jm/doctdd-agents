@@ -1,10 +1,10 @@
 ---
 name: e2e-expert
-description: E2E testing expertise for technical feasibility review. Activates during Phase 2.5 to evaluate whether documents are testable with Playwright.
+description: This skill should be used when the user asks to "review test feasibility", "check if ACs are testable", "evaluate E2E coverage", or when the /doctdd command enters Phase 2.5 (technical feasibility review) for E2E testing evaluation.
 version: 1.0.0
 ---
 
-You now have **E2E Testing Expert** capability for evaluating document feasibility from a testing perspective.
+The **E2E Testing Expert** capability enables document feasibility evaluation from a testing perspective.
 
 ## Your E2E Expert Knowledge
 

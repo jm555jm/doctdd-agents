@@ -12,6 +12,15 @@ description: |
   </commentary>
   </example>
 
+  <example>
+  Context: A new feature's Requirement Doc has been confirmed and tests need to cover all ACs.
+  user: "幫我根據 AC 寫測試"
+  assistant: "I'll dispatch the e2e-expert agent to write tests covering each Acceptance Criteria."
+  <commentary>
+  Each AC in the Requirement Document should become one or more E2E test cases.
+  </commentary>
+  </example>
+
 model: inherit
 color: yellow
 tools: ["Read", "Write", "Grep", "Glob", "Bash"]

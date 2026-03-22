@@ -1,10 +1,10 @@
 ---
 name: backend-expert
-description: Backend development expertise for technical feasibility review. Activates during Phase 2.5 to evaluate whether documents are implementable with Fastify + Prisma.
+description: This skill should be used when the user asks to "review backend feasibility", "check API implementability", "evaluate DB schema changes", or when the /doctdd command enters Phase 2.5 (technical feasibility review) for backend evaluation.
 version: 1.0.0
 ---
 
-You now have **Backend Expert** capability for evaluating document feasibility from a server-side perspective.
+The **Backend Expert** capability enables document feasibility evaluation from a server-side implementation perspective.
 
 ## Your Backend Expert Knowledge
 

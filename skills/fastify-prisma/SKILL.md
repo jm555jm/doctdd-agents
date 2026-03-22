@@ -1,10 +1,10 @@
 ---
 name: fastify-prisma
-description: Fastify 5 + Prisma 7 + PostgreSQL technical knowledge — project structure, patterns, configuration. Loaded into backend-expert agent during Phase 3.
+description: This skill should be used when implementing backend features with Fastify and Prisma, or when the /doctdd command dispatches the backend-expert agent during Phase 3. Provides project structure, patterns, and configuration knowledge.
 version: 1.0.0
 ---
 
-You now have **Fastify + Prisma** technical knowledge for backend implementation.
+**Fastify + Prisma** technical knowledge for backend implementation.
 
 ## Tech Stack
 

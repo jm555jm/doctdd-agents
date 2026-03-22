@@ -1,10 +1,10 @@
 ---
 name: vue3-element-plus
-description: Vue 3 + Vite + Element Plus technical knowledge — Composition API, auto-import, project structure. Loaded into frontend-expert agent during Phase 3.
+description: This skill should be used when implementing frontend features with Vue 3 and Element Plus, or when the /doctdd command dispatches the frontend-expert agent during Phase 3. Provides Composition API, auto-import, and project structure knowledge.
 version: 1.0.0
 ---
 
-You now have **Vue 3 + Element Plus** technical knowledge for frontend implementation.
+**Vue 3 + Element Plus** technical knowledge for frontend implementation.
 
 ## Tech Stack
 
