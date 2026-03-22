@@ -90,16 +90,16 @@ For anything not detected or confirmed wrong:
 
 Map detected stacks to skill names:
 
-| Detected | agent_skill | review_skill |
-|---|---|---|
-| Vue 3 + Element Plus | vue3-element-plus | frontend-expert |
-| React | react | frontend-expert |
-| Angular | angular | frontend-expert |
-| Fastify + Prisma | fastify-prisma | backend-expert |
-| Express + Prisma | express-prisma | backend-expert |
-| NestJS | nestjs | backend-expert |
-| Playwright | playwright | e2e-expert |
-| Cypress | cypress | e2e-expert |
+| Detected | agent_skill |
+|---|---|
+| Vue 3 + Element Plus | vue3-element-plus |
+| React | react |
+| Angular | angular |
+| Fastify + Prisma | fastify-prisma |
+| Express + Prisma | express-prisma |
+| NestJS | nestjs |
+| Playwright | playwright |
+| Cypress | cypress |
 
 If the combination doesn't have a matching skill in the plugin, note that a custom skill may need to be created.
 

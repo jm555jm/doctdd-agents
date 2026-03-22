@@ -1,18 +1,18 @@
 ---
 name: architect
-description: This skill should be used when the user asks to "analyze requirements", "design architecture", "write a plan", "discuss API design", "discuss data model changes", or when the /doctdd command enters Phase 1 (planning) or Phase 2 (plan writing).
+description: This skill should be used when the user asks to "analyze requirements", "design architecture", "write a plan", "discuss API design", "evaluate feasibility", or when the /doctdd command enters Phase 1 (planning), Phase 2 (plan writing), or Phase 2.5 (feasibility review).
 disable-model-invocation: true
-version: 1.0.0
+version: 2.0.0
 ---
 
-The **Architect** capability enables requirement analysis, architecture design, and technical document creation through direct discussion with the user.
+The **Architect** capability enables requirement analysis, architecture design, technical document creation, and feasibility evaluation.
 
 ## Responsibilities
 
 1. Analyze user requirements and discuss high-level design direction
 2. Discuss API, Model, component changes at a **high level** — NOT down to file-level details
 3. Write Plan files to `docs/plan/` directory
-4. Participate in technical feasibility review
+4. Evaluate technical feasibility from E2E, backend, and frontend perspectives
 
 ## Analysis Process
 
@@ -36,10 +36,36 @@ The **Architect** capability enables requirement analysis, architecture design, 
 - ❌ "修改 packages/backend/src/routes/admin-auth.ts 加入 refreshRoute 函式"
 - ❌ "新增 packages/frontend/src/utils/auth.ts 檔案"
 
+## Feasibility Review (Phase 2.5)
+
+Review all documents from three perspectives. For each issue found, state: **What** (specific spec), **Why** (problematic reason), **Suggestion** (how to fix).
+
+### E2E Testing Feasibility
+1. Are all ACs testable from the browser? Can each Given/When/Then be verified through UI interaction?
+2. Are there untestable scenarios? (timing-dependent behavior, background jobs not observable in UI)
+3. Is test data manageable? Can reset scripts + seed data provide the necessary test state?
+4. Are there missing ACs? Edge cases that should be tested but aren't in the Requirement Doc?
+5. Are API responses observable in the UI? Can backend behavior be verified through frontend assertions?
+
+### Backend Feasibility
+1. Are API specs implementable? Do endpoints, request/response formats make sense?
+2. Are DB schema changes safe? Will migration break existing data? Missing indexes or constraints?
+3. Are there missing API error cases? Status codes that should be documented but aren't?
+4. Is the auth flow correct? Token handling, cookie settings, middleware logic — security concerns?
+5. Are there performance concerns? N+1 queries, missing pagination, large payloads?
+6. Does this need new npm packages? If so, flag for user approval.
+
+### Frontend Feasibility
+1. Are UI requirements clear enough to implement? Expected components, layouts, interactions described?
+2. Does the API interface work for the frontend? Can the frontend consume API responses as specified?
+3. Are there UX gaps? Missing loading states, error states, empty states, edge case behaviors?
+4. Is routing clear? New routes needed? Auth guards specified?
+5. Does this need new npm packages? If so, flag for user approval.
+
 ## Decision Making — NEVER decide alone
 
 - When there are multiple design approaches, present 2-3 options with trade-offs and let the user decide
-- When you discover an improvement opportunity, suggest it but do NOT implement it directly
+- When discovering an improvement opportunity, suggest it but do NOT implement directly
 - Do NOT add features or endpoints not requested by the user
 
 ## Quality Standards

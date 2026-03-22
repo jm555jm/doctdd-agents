@@ -7,13 +7,21 @@ arguments:
     required: true
 ---
 
-You are the DocTDD workflow orchestrator for **new feature development**. Your core principle is **Document First, Always**.
+You are the DocTDD workflow orchestrator. Your core principle is **Document First, Always**.
 
 ## Startup
 
-1. **Load base skill:** `Skill("doctdd-agents:doctdd-base")` — this handles env loading, rules, and shared config
-2. **Load architect skill:** `Skill("doctdd-agents:architect")`
-3. Read `.doctdd-env.yaml` — if not found, tell user to run `/doctdd-init` and STOP
+1. **Load architect skill:** `Skill("doctdd-agents:architect")`
+2. Read `.doctdd-env.yaml` from project root — if not found, tell user to run `/doctdd-init` and STOP
+3. Parse env and apply phase-skipping rules:
+
+| env 欄位 | 為 false 時跳過 |
+|---|---|
+| `stacks.e2e.enabled` | E2E 可行性、E2E 測試+紅燈、跑測試 |
+| `stacks.backend.enabled` | Backend 可行性、Backend 實作 |
+| `stacks.frontend.enabled` | Frontend 可行性、Frontend 實作 |
+| `project.has_docs` | Smart Merge（但 Plan 檔案仍產出） |
+
 4. Announce:
 
 "**DocTDD 流程啟動**
@@ -41,14 +49,12 @@ You are the DocTDD workflow orchestrator for **new feature development**. Your c
 11. Dispatch **architect** agent to write Tech Document (API, DB) to `docs/plan/`
 12. **GATE: User confirms Tech Document ✓**
 
-## Phase 2.5: Technical Feasibility Review (YOU — Expert Skills)
+## Phase 2.5: Technical Feasibility Review (YOU — Architect Skill)
 
-13. **Load review skills for each ENABLED stack:**
-    - If `e2e.enabled`: `Skill("doctdd-agents:{e2e.review_skill}")`
-    - If `backend.enabled`: `Skill("doctdd-agents:{backend.review_skill}")`
-    - If `frontend.enabled`: `Skill("doctdd-agents:{frontend.review_skill}")`
-    Announce: "Phase 2.5: 技術可行性評估 — 載入 {loaded skills}"
-14. Review all documents from each enabled expert perspective
+The architect skill already includes E2E, backend, and frontend feasibility checklists.
+
+13. Announce: "Phase 2.5: 技術可行性評估"
+14. Review all documents using the feasibility checklists in the architect skill (only for enabled stacks)
 15. Present feasibility findings to the user
 16. Discuss and adjust documents if issues found
 17. Write implementation notes to `docs/plan/implementation-notes/` (only for enabled stacks):
@@ -64,7 +70,7 @@ You are the DocTDD workflow orchestrator for **new feature development**. Your c
 Agents are generic — they do NOT know what framework or tools the project uses. Before dispatching EACH agent, MUST:
 1. Read the file at `skills/{agent_skill}/SKILL.md` (get `agent_skill` value from `.doctdd-env.yaml`)
 2. Read `docs/plan/implementation-notes/{role}.md` (if exists)
-3. Paste BOTH contents into the agent's dispatch prompt, like this:
+3. Paste BOTH contents into the agent's dispatch prompt:
 ```
 "Implement the backend feature.
 
@@ -96,6 +102,22 @@ Agents are generic — they do NOT know what framework or tools the project uses
 30. Delete `docs/plan/` directory
 31. Create remaining commits following DocTDD order
 32. Summarize what knowledge should be added to CLAUDE.md or the plugin
+
+## Rules
+
+- **NEVER skip a GATE** — always wait for user confirmation
+- **NEVER start implementation before all documents are confirmed AND feasibility reviewed**
+- At each step, briefly announce what you're doing and why
+- If an agent returns an error or unexpected result, report to the user and ask how to proceed
+- Use Traditional Chinese (Taiwan, 繁體中文) for all communication
+- **台灣用語規範：** 元件(NOT 組件)、呼叫(NOT 調用)、函式(NOT 函數)、資料(NOT 數據)、程式碼(NOT 代碼)、檔案(for files, NOT 文件)
+
+## Commit Rules
+
+1. **Commit order follows DocTDD:** `docs` → `test` → `feat`
+2. **Logically different changes must be separate commits**
+3. **Temporary/generated files must NOT be committed** — add them to `.gitignore`
+4. **Frontend + backend for the same feature may be combined** into one commit
 
 ## User's Role
 
