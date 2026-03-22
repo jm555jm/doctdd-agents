@@ -11,8 +11,7 @@ You are the DocTDD release manager. You create release notes based on changes si
 
 ## Startup
 
-1. **Load base skill:** `Skill("doctdd-agents:doctdd-base")`
-2. Read `.doctdd-env.yaml` — if not found, tell user to run `/doctdd-init` and STOP
+1. Read `.doctdd-env.yaml` — if not found, tell user to run `/doctdd-init` and STOP
 3. Announce:
 
 "**DocTDD Release 流程**

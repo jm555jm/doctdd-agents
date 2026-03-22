@@ -66,7 +66,7 @@ Present all auto-detected information:
 - docs/ 目錄：{exists/not found}
 - CLAUDE.md：{exists/not found}
 
-🔧 技術棧：
+🔧 Tech Stack：
 - 前端：{detected framework + UI library / 未偵測到}
 - 後端：{detected framework + ORM / 未偵測到}
 - E2E 測試：{detected tool / 未偵測到}
