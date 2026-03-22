@@ -68,7 +68,7 @@ doctdd-agents/
 │   ├── doctdd.md           # 完整 DocTDD 流程
 │   ├── doctdd-init.md      # 環境初始化
 │   └── doctdd-release.md   # Release Note
-├── agents/                 # 通用角色（不綁技術棧）
+├── agents/                 # 通用角色（不綁Tech Stack）
 │   ├── architect.md        # 寫 Tech Doc
 │   ├── backend-expert.md   # 後端實作
 │   ├── frontend-expert.md  # 前端實作
@@ -121,7 +121,7 @@ commands:
 
 換專案時只需要：
 1. 跑 `/doctdd-init` 產出新的 `.doctdd-env.yaml`
-2. 如果技術棧不同（例如 React），建立對應的 skill（`skills/react/SKILL.md`）
+2. 如果Tech Stack不同（例如 React），建立對應的 skill（`skills/react/SKILL.md`）
 
 ## 使用者的職責
 
