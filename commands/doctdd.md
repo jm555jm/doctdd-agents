@@ -17,7 +17,7 @@ You are the DocTDD workflow orchestrator. Your core principle is **Document Firs
 
 | env 欄位 | 為 false 時跳過 |
 |---|---|
-| `stacks.e2e.enabled` | E2E 可行性、E2E 測試+紅燈、跑測試 |
+| `stacks.testing.enabled` | Testing 可行性、測試撰寫+紅燈、跑測試 |
 | `stacks.backend.enabled` | Backend 可行性、Backend 實作 |
 | `stacks.frontend.enabled` | Frontend 可行性、Frontend 實作 |
 | `project.has_docs` | Smart Merge（但 Plan 檔案仍產出） |
@@ -26,7 +26,7 @@ You are the DocTDD workflow orchestrator. Your core principle is **Document Firs
 
 "**DocTDD 流程啟動**
 📋 任務：{task description}
-⚙️ 環境：frontend={enabled/disabled}, backend={enabled/disabled}, e2e={enabled/disabled}
+⚙️ 環境：frontend={enabled/disabled}, backend={enabled/disabled}, testing={enabled/disabled}
 📝 你的職責：Review 文件、確認可行性、驗證功能、監督流程
 
 開始 Phase 1..."
@@ -51,14 +51,14 @@ You are the DocTDD workflow orchestrator. Your core principle is **Document Firs
 
 ## Phase 2.5: Technical Feasibility Review (YOU — Architect Skill)
 
-The architect skill already includes E2E, backend, and frontend feasibility checklists.
+The architect skill already includes testing, backend, and frontend feasibility checklists.
 
 13. Announce: "Phase 2.5: 技術可行性評估"
 14. Review all documents using the feasibility checklists in the architect skill (only for enabled stacks)
 15. Present feasibility findings to the user
 16. Discuss and adjust documents if issues found
 17. Write implementation notes to `docs/plan/implementation-notes/` (only for enabled stacks):
-    - If `e2e.enabled`: write `e2e.md`
+    - If `testing.enabled`: write `testing.md`
     - If `backend.enabled`: write `backend.md`
     - If `frontend.enabled`: write `frontend.md`
 18. **GATE: User reviews and fine-tunes implementation notes ✓**
@@ -86,10 +86,10 @@ Agents are generic — they do NOT know what framework or tools the project uses
 ```
 **If you skip this, the agent will not know what framework to use and will fail.**
 
-20. **[if e2e.enabled]** Read `skills/{e2e.agent_skill}/SKILL.md` + `implementation-notes/e2e.md`, dispatch **e2e-expert** agent with both included
-21. **[if e2e.enabled]** Run `{commands.test_e2e}` — **ALL tests MUST be RED.** If any passes, report to user.
+20. **[if testing.enabled]** Read `skills/{testing.agent_skill}/SKILL.md` + `implementation-notes/testing.md`, dispatch **testing-expert** agent with both included
+21. **[if testing.enabled]** Run `{commands.test}` — **ALL tests MUST be RED.** If any passes, report to user.
 22. **[if backend/frontend enabled]** Read corresponding `skills/{agent_skill}/SKILL.md` + `implementation-notes/{role}.md`, dispatch agents IN PARALLEL with content included
-23. **[if e2e.enabled]** Run `{commands.test_e2e}` — all tests must pass
+23. **[if testing.enabled]** Run `{commands.test}` — all tests must pass
 24. If tests fail: fix and re-run until all pass
 25. Dispatch **code-reviewer** agent to review all new code
 26. If Code Reviewer finds issues: fix and re-review until approved

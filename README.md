@@ -43,12 +43,12 @@ Phase 2: 文件（Document First）
   └─ Tech Doc（API、DB）→ GATE ✓
 
 Phase 2.5: 技術可行性評估
-  ├─ E2E / Backend / Frontend 可行性 checklist
+  ├─ Testing / Backend / Frontend 可行性 checklist
   ├─ Implementation Notes 產出
   └─ GATE: 使用者確認可行性 ✓
 
 Phase 3: 實作
-  ├─ E2E 測試（紅燈驗證）
+  ├─ 測試撰寫（紅燈驗證）
   ├─ Backend + Frontend 平行實作
   ├─ 跑測試 → 全部通過
   ├─ Code Review → 修復 → 再審查
@@ -72,14 +72,15 @@ doctdd-agents/
 │   ├── architect.md        # 寫 Tech Doc
 │   ├── backend-expert.md   # 後端實作
 │   ├── frontend-expert.md  # 前端實作
-│   ├── e2e-expert.md       # E2E 測試
+│   ├── testing-expert.md   # 測試撰寫
 │   ├── doc-manager.md      # 文件管理 + Smart Merge
 │   └── code-reviewer.md    # Simple Design 4 Rules 審查
 ├── skills/                 # 技術知識（可切換）
 │   ├── architect/          # 架構分析 + 可行性評估
-│   ├── playwright/         # Playwright E2E 知識
+│   ├── playwright/         # Playwright 測試知識
 │   ├── fastify-prisma/     # Fastify + Prisma 知識
-│   └── vue3-element-plus/  # Vue 3 + Element Plus 知識
+│   ├── vue3-element-plus/  # Vue 3 + Element Plus 知識
+│   └── electron-game/      # Electron + Canvas 2D 遊戲知識
 └── templates/
     └── doctdd-env.template.yaml
 ```
@@ -109,12 +110,12 @@ stacks:
   backend:
     enabled: true
     agent_skill: fastify-prisma
-  e2e:
+  testing:
     enabled: true
     agent_skill: playwright
 
 commands:
-  test_e2e: "npm run test:e2e"
+  test: "npm run test:e2e"
 ```
 
 ## 跨專案使用

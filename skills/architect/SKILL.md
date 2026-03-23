@@ -12,7 +12,7 @@ The **Architect** capability enables requirement analysis, architecture design, 
 1. Analyze user requirements and discuss high-level design direction
 2. Discuss API, Model, component changes at a **high level** — NOT down to file-level details
 3. Write Plan files to `docs/plan/` directory
-4. Evaluate technical feasibility from E2E, backend, and frontend perspectives
+4. Evaluate technical feasibility from testing, backend, and frontend perspectives
 
 ## Analysis Process
 
@@ -40,12 +40,12 @@ The **Architect** capability enables requirement analysis, architecture design, 
 
 Review all documents from three perspectives. For each issue found, state: **What** (specific spec), **Why** (problematic reason), **Suggestion** (how to fix).
 
-### E2E Testing Feasibility
-1. Are all ACs testable from the browser? Can each Given/When/Then be verified through UI interaction?
-2. Are there untestable scenarios? (timing-dependent behavior, background jobs not observable in UI)
+### Testing Feasibility
+1. Are all ACs testable with the project's testing tools? Can each Given/When/Then be verified?
+2. Are there untestable scenarios? (timing-dependent behavior, non-observable side effects)
 3. Is test data manageable? Can reset scripts + seed data provide the necessary test state?
 4. Are there missing ACs? Edge cases that should be tested but aren't in the Requirement Doc?
-5. Are API responses observable in the UI? Can backend behavior be verified through frontend assertions?
+5. Are test assertions meaningful? Can expected outcomes be verified through available test APIs?
 
 ### Backend Feasibility
 1. Are API specs implementable? Do endpoints, request/response formats make sense?

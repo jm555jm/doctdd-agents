@@ -14,15 +14,15 @@ stacks:
   frontend:
     enabled: true
     agent_skill: vue3-element-plus   # Tech skill injected into frontend agent
-    # Other options: react, angular, svelte, electron-game (create custom skill)
+    # Other options: react, angular, svelte, electron-game
   backend:
     enabled: true
     agent_skill: fastify-prisma      # Tech skill injected into backend agent
-    # Other options: express-prisma, nestjs, hono, electron-game (create custom skill)
-  e2e:
+    # Other options: express-prisma, nestjs, hono, electron-game
+  testing:
     enabled: true
-    agent_skill: playwright          # Tech skill injected into e2e agent
-    # Other options: cypress (create custom skill)
+    agent_skill: playwright          # Tech skill injected into testing agent
+    # Other options: cypress, jest, vitest
 
 commands:
-  test_e2e: "npm run test:e2e"
+  test: "npm run test:e2e"

@@ -52,14 +52,16 @@ Backend detection:
 - Electron without server framework → electron-game (main process)
 - None found → `backend.enabled: false`
 
-E2E detection:
+Testing detection:
 - `@playwright/test` / `playwright` → playwright
 - `cypress` → cypress
-- None found → `e2e.enabled: false`
+- `jest` / `@jest/core` → jest
+- `vitest` → vitest
+- None found → `testing.enabled: false`
 
 **Commands detection:**
 - Check `package.json` scripts for test-related commands
-- Look for `test:e2e`, `test:playwright`, `test:cypress`, `e2e` scripts
+- Look for `test`, `test:e2e`, `test:playwright`, `test:cypress`, `test:unit` scripts
 
 ### Step 3: Present findings
 
@@ -76,10 +78,10 @@ Present all auto-detected information:
 🔧 Tech Stack：
 - 前端：{detected framework + UI library / 未偵測到}
 - 後端：{detected framework + ORM / 未偵測到}
-- E2E 測試：{detected tool / 未偵測到}
+- 測試：{detected tool / 未偵測到}
 
 ⌨️ 指令：
-- E2E 測試：{detected command / 未偵測到}
+- 測試：{detected command / 未偵測到}
 
 以上正確嗎？有需要修正的地方嗎？"
 
@@ -90,8 +92,8 @@ Wait for user confirmation. If they correct something, update the detection.
 For anything not detected or confirmed wrong:
 - If no frontend detected but user says there is one: "使用什麼前端框架？"
 - If no backend detected but user says there is one: "使用什麼後端框架？"
-- If no E2E detected but user says there is one: "使用什麼 E2E 測試工具？"
-- If E2E enabled but no test command found: "E2E 測試指令是什麼？（例如 npm run test:e2e）"
+- If no testing detected but user says there is one: "使用什麼測試工具？"
+- If testing enabled but no test command found: "測試指令是什麼？（例如 npm run test:e2e 或 npx jest）"
 
 ### Step 5: Map to skill names
 
@@ -108,6 +110,8 @@ Map detected stacks to skill names:
 | Electron (no web framework) | electron-game |
 | Playwright | playwright |
 | Cypress | cypress |
+| Jest | jest |
+| Vitest | vitest |
 
 If the combination doesn't have a matching skill in the plugin, note that a custom skill may need to be created.
 
@@ -124,8 +128,8 @@ Read the template from the plugin's `templates/doctdd-env.template.yaml` for ref
 {if !frontend.enabled} ⬚ 前端環節跳過{/if}
 {if backend.enabled} ✅ 後端環節啟用（{agent_skill}）{/if}
 {if !backend.enabled} ⬚ 後端環節跳過{/if}
-{if e2e.enabled} ✅ E2E 測試環節啟用（{agent_skill}）{/if}
-{if !e2e.enabled} ⬚ E2E 測試環節跳過{/if}
+{if testing.enabled} ✅ 測試環節啟用（{agent_skill}）{/if}
+{if !testing.enabled} ⬚ 測試環節跳過{/if}
 {if has_docs} ✅ 文件合併環節啟用{/if}
 {if !has_docs} ⬚ 文件合併環節跳過（無 docs/ 目錄）{/if}
 
