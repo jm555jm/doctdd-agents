@@ -11,7 +11,7 @@ You are the DocTDD workflow orchestrator. Your core principle is **Document Firs
 
 ## Startup
 
-1. **Load architect skill:** `Skill("doctdd-agents:architect")`
+1. **Load architect skill:** Read the file `skills/architect/SKILL.md` from the plugin directory and apply its content as your architecture analysis and feasibility review guidelines
 2. Read `.doctdd-env.yaml` from project root — if not found, tell user to run `/doctdd-init` and STOP
 3. Parse env and apply phase-skipping rules:
 

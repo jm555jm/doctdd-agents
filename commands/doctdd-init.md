@@ -29,12 +29,18 @@ Silently detect the following:
 
 **Stacks (scan `package.json` dependencies, including workspace packages):**
 
+Electron detection (check FIRST — affects frontend/backend mapping):
+- `electron` in dependencies or devDependencies → Electron app detected
+- If Electron detected AND no web framework (no Vue/React/Angular/Svelte) → **Electron game/native app**: frontend AND backend both use `electron-game` skill
+- If Electron detected AND has web framework → web framework for frontend, Electron main process for backend
+
 Frontend detection:
 - `vue` → vue-based
 - `element-plus` → vue3-element-plus
 - `react` / `react-dom` → react-based
 - `@angular/core` → angular-based
 - `svelte` → svelte-based
+- Electron without web framework → electron-game (renderer process)
 - None found → `frontend.enabled: false`
 
 Backend detection:
@@ -43,6 +49,7 @@ Backend detection:
 - `express` → express-based
 - `@nestjs/core` → nestjs-based
 - `hono` → hono-based
+- Electron without server framework → electron-game (main process)
 - None found → `backend.enabled: false`
 
 E2E detection:
@@ -98,6 +105,7 @@ Map detected stacks to skill names:
 | Fastify + Prisma | fastify-prisma |
 | Express + Prisma | express-prisma |
 | NestJS | nestjs |
+| Electron (no web framework) | electron-game |
 | Playwright | playwright |
 | Cypress | cypress |
 

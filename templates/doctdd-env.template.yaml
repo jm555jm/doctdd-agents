@@ -14,11 +14,11 @@ stacks:
   frontend:
     enabled: true
     agent_skill: vue3-element-plus   # Tech skill injected into frontend agent
-    # Other options: react, angular, svelte (create custom skill)
+    # Other options: react, angular, svelte, electron-game (create custom skill)
   backend:
     enabled: true
     agent_skill: fastify-prisma      # Tech skill injected into backend agent
-    # Other options: express-prisma, nestjs, hono (create custom skill)
+    # Other options: express-prisma, nestjs, hono, electron-game (create custom skill)
   e2e:
     enabled: true
     agent_skill: playwright          # Tech skill injected into e2e agent
