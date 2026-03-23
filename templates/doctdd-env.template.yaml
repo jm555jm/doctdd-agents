@@ -18,11 +18,11 @@ stacks:
   backend:
     enabled: true
     agent_skill: fastify-prisma      # Tech skill injected into backend agent
-    # Other options: express-prisma, nestjs, hono, electron-game
+    # Other options: express-prisma, nestjs, hono, electron-game, dotnet-webapi
   testing:
     enabled: true
     agent_skill: playwright          # Tech skill injected into testing agent
-    # Other options: cypress, jest, vitest
+    # Other options: cypress, jest, vitest, nunit, xunit
 
 commands:
   test: "npm run test:e2e"

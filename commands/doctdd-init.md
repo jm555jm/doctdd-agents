@@ -22,12 +22,13 @@ You are the DocTDD environment initializer. Your job is to analyze the current p
 Silently detect the following:
 
 **Project basics:**
-- Check root `package.json` for `workspaces` field → monorepo detection
+- Check root `package.json` for `workspaces` field → monorepo detection (Node.js)
+- Check for `*.sln` or `*.csproj` files → .NET project detection
 - If monorepo, identify `packages_dir` (usually `packages/`)
 - Check if `docs/` directory exists → `has_docs`
 - Check if `CLAUDE.md` exists → `has_claude_md`
 
-**Stacks (scan `package.json` dependencies, including workspace packages):**
+**Stacks (scan `package.json` for Node.js, `*.csproj` for .NET):**
 
 Electron detection (check FIRST — affects frontend/backend mapping):
 - `electron` in dependencies or devDependencies → Electron app detected
@@ -50,6 +51,7 @@ Backend detection:
 - `@nestjs/core` → nestjs-based
 - `hono` → hono-based
 - Electron without server framework → electron-game (main process)
+- .NET `*.csproj` with `Microsoft.AspNetCore` SDK → dotnet-webapi
 - None found → `backend.enabled: false`
 
 Testing detection:
@@ -57,11 +59,14 @@ Testing detection:
 - `cypress` → cypress
 - `jest` / `@jest/core` → jest
 - `vitest` → vitest
+- .NET test project (`*.csproj` with `NUnit` package) → nunit
+- .NET test project (`*.csproj` with `xunit` package) → xunit
+- .NET test project (`*.csproj` with `MSTest` package) → mstest
 - None found → `testing.enabled: false`
 
 **Commands detection:**
-- Check `package.json` scripts for test-related commands
-- Look for `test`, `test:e2e`, `test:playwright`, `test:cypress`, `test:unit` scripts
+- Node.js: Check `package.json` scripts for `test`, `test:e2e`, `test:playwright`, `test:cypress`, `test:unit`
+- .NET: Default command is `dotnet test`
 
 ### Step 3: Present findings
 
@@ -108,10 +113,14 @@ Map detected stacks to skill names:
 | Express + Prisma | express-prisma |
 | NestJS | nestjs |
 | Electron (no web framework) | electron-game |
+| ASP.NET Core Web API | dotnet-webapi |
 | Playwright | playwright |
 | Cypress | cypress |
 | Jest | jest |
 | Vitest | vitest |
+| NUnit | nunit |
+| xUnit | xunit |
+| MSTest | mstest |
 
 If the combination doesn't have a matching skill in the plugin, note that a custom skill may need to be created.
 

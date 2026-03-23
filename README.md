@@ -80,7 +80,9 @@ doctdd-agents/
 │   ├── playwright/         # Playwright 測試知識
 │   ├── fastify-prisma/     # Fastify + Prisma 知識
 │   ├── vue3-element-plus/  # Vue 3 + Element Plus 知識
-│   └── electron-game/      # Electron + Canvas 2D 遊戲知識
+│   ├── electron-game/      # Electron + Canvas 2D 遊戲知識
+│   ├── dotnet-webapi/      # ASP.NET Core Web API 知識
+│   └── nunit/              # NUnit + NSubstitute + FluentAssertions 知識
 └── templates/
     └── doctdd-env.template.yaml
 ```
