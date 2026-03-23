@@ -39,6 +39,7 @@ packages/frontend/
 - Element Plus components are auto-imported (no import statements needed)
 - Use `fetch` for API calls (base URL: `/api`)
 - Chinese text for UI labels and messages
+- Form inputs must have `id`, and `<label>` must have matching `for` attribute (e.g. `<label for="username">帳號</label>` + `<el-input id="username" />`). This ensures a11y and enables Playwright `getByLabel` locators.
 
 ## Key Patterns
 

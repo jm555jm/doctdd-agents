@@ -35,6 +35,7 @@ test.describe('Feature Name', () => {
 - Group related tests with `test.describe`
 - Test names in Chinese, matching the AC description
 - Use semantic locators: `getByLabel`, `getByRole`, `getByText`
+- `getByLabel` requires the frontend `<label>` to have a `for` attribute matching the `<input>`'s `id`. If this association is missing, the locator will fail silently. When writing tests with `getByLabel`, verify the frontend template has `for`/`id` pairing.
 - Base URL is configured in `playwright.config.ts`
 - One test per Acceptance Criteria (minimum)
 - Cover both positive and negative cases
